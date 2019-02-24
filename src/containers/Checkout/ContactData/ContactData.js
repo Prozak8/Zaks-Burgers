@@ -16,9 +16,9 @@ class ContactData extends Component {
         loading: false
     }
 
-    orderHandler = (event) => {
+    orderHandler = ( event ) => {
         event.preventDefault();
-        this.setState({loading: true});
+        this.setState({ loading: true });
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price,
@@ -33,13 +33,13 @@ class ContactData extends Component {
             },
             deliveryMethod: 'fastest'
         }
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({loading: false});
+        axios.post( '/orders.json', order )
+            .then( response => {
+                this.setState({ loading: false });
                 this.props.history.push('/');
             })
-            .catch(error => {
-                this.setState({loading: false});
+            .catch( error => {
+                this.setState({ loading: false });
             });
     }
 
@@ -59,10 +59,10 @@ class ContactData extends Component {
         return (
             <div className={classes.ContactData}>
                 <h4>Enter Contact Details</h4>
-                {form}
+                { form }
             </div>
         )
-    }
+    };
 }
 
 export default ContactData;
