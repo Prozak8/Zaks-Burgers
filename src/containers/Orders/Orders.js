@@ -42,6 +42,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
-)(withErrorHandler(mapStateToProps, axios))
+)(withErrorHandler(Orders, axios))
