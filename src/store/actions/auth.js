@@ -8,10 +8,11 @@ export const authStart = () => {
   }
 }
 
-export const authSuccess = authData => {
+export const authSuccess = (token, userId) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
-    authData: authData,
+    idToken: token,
+    userId: userId,
   }
 }
 
@@ -31,7 +32,7 @@ export const auth = (email, password, isSignup) => {
       returnSecureToken: true,
     }
     let url =
-      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key=AIzaSyCvAWuicEtyytrSzGzCWOvJtExNyINhkvg"
+      "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyCvAWuicEtyytrSzGzCWOvJtExNyINhkvg"
     if (!isSignup) {
       url =
         "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyCvAWuicEtyytrSzGzCWOvJtExNyINhkvg"
@@ -40,7 +41,7 @@ export const auth = (email, password, isSignup) => {
       .post(url, authData)
       .then(response => {
         console.log(response)
-        dispatch(authSuccess(response.data))
+        dispatch(authSuccess(response.data.idToken, response.data.localId))
       })
       .catch(err => {
         console.log(err)
