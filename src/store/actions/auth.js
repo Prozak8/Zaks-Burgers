@@ -16,7 +16,7 @@ export const authSuccess = (token, userId) => {
   }
 }
 
-export const authFail = error => {
+export const authFailure = error => {
   return {
     type: actionTypes.AUTH_FAILURE,
     error: error,
@@ -44,8 +44,7 @@ export const auth = (email, password, isSignup) => {
         dispatch(authSuccess(response.data.idToken, response.data.localId))
       })
       .catch(err => {
-        console.log(err)
-        dispatch(authFail(err))
+        dispatch(authFailure(err.response.data.error))
       })
   }
 }
