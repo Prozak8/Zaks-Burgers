@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Prozak8/Zaks-Burgers/precache-manifest.9019aa68eff1ed04cab156e44e2392c3.js"
+  "/Prozak8/Zaks-Burgers/precache-manifest.a5a96ca26225752885224dcf09711779.js"
 );
 
 workbox.clientsClaim();
